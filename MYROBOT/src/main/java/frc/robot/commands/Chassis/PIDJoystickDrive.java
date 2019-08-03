@@ -6,6 +6,8 @@ import frc.robot.RobotMap;
 import frc.robot.Useful;
 
 public class PIDJoystickDrive extends Command {
+  int LT_Status = 0;
+  int RT_Status = 0;
   public PIDJoystickDrive() {
     requires(Robot.m_Chassis);
   }
@@ -19,6 +21,37 @@ public class PIDJoystickDrive extends Command {
   protected void execute() {
     double Rspd = 0.0;
     double Lspd = 0.0;
+    double LT = Robot.m_oi.Controller.getRawAxis(RobotMap.LT_Analog);
+    double RT = Robot.m_oi.Controller.getRawAxis(RobotMap.RT_Analog);
+
+    if(LT_Status == 0){
+      if(LT > 0.7){
+        Robot.m_Chassis.MinusInitAngle();
+        System.out.println("LT_TRIG!!");
+        LT_Status = 1;
+      }
+    }else if(LT_Status == 1){
+      if(LT < 0.7){
+        LT_Status = 2;
+      }
+    }else if(LT_Status == 2){
+      LT_Status = 0;
+    }
+
+    if(RT_Status == 0){
+      if(RT > 0.7){
+        Robot.m_Chassis.AddInitAngle();
+        System.out.println("RT_TRIG!!");
+        RT_Status = 1; 
+      }
+    }else if(RT_Status == 1){
+      if(RT < 0.7){
+        RT_Status = 2;
+      }
+    }else if(RT_Status == 2){
+      RT_Status = 0;
+    }
+
     double Joystick_Y = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_LY) * Useful.Boolean_To_Int(RobotMap.Joystick_Y_Invert);
     double Joystick_X = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_RX) * Useful.Boolean_To_Int(RobotMap.Joystick_X_Invert);
     if(Math.abs(Joystick_Y) < RobotMap.Joystick_ERR){
@@ -53,8 +86,7 @@ public class PIDJoystickDrive extends Command {
   protected void end() {
     Robot.m_Chassis.SetSpeed(0,0);
   }
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
+
   @Override
   protected void interrupted() {
     this.end();

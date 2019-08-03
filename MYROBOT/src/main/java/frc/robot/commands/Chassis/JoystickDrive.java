@@ -46,6 +46,6 @@ public class JoystickDrive extends Command {
 
   @Override
   protected void interrupted(){
-    this.end();
+    end();
   }
 }
