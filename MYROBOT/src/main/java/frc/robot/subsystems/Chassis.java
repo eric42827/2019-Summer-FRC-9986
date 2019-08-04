@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Timer;
 
 
-
 public class Chassis extends Subsystem {
   public VictorSP RBM = new VictorSP(RobotMap.Motor_RB);
   public VictorSP LBM = new VictorSP(RobotMap.Motor_LB);
