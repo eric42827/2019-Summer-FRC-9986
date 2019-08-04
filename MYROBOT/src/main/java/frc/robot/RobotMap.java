@@ -20,19 +20,21 @@ public class RobotMap {
   public static int Motor_LB = 1;
   public static boolean Motor_LB_Invert = false;
   //PowerPercentage//
-  public static double PowerPercentage = 0.4;
+  public static double PowerPercentage = 0.7;
   //PID//
-  public static double Kp = 0.1;
+  public static double Kp = 0.02;
   public static double Ki = 0.00;
-  public static double Kd = 50000;
-  public static double PID_Enable_Delay = 0.5;
+  public static double Kd = 20000;
+  public static double PID_Enable_Delay = 0.3;
   
 
   ////Controller Setting////
   public static int Joystick_Port = 0;
-  public static double Joystick_ERR = 0.3;
+  public static double Joystick_ERR = 0.25;
   public static boolean Joystick_Y_Invert = true;
   public static boolean Joystick_X_Invert = true;
+  public static boolean Joystick_Y_Linear = false;
+  public static boolean Joystick_X_Linear = false;
   //Button
   public static int Down_Button = 1; //A-YELLOW
   public static int Right_Button = 2;//B-RED

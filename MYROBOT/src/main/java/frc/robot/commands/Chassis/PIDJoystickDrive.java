@@ -27,7 +27,6 @@ public class PIDJoystickDrive extends Command {
     if(LT_Status == 0){
       if(LT > 0.7){
         Robot.m_Chassis.MinusInitAngle();
-        System.out.println("LT_TRIG!!");
         LT_Status = 1;
       }
     }else if(LT_Status == 1){
@@ -41,7 +40,6 @@ public class PIDJoystickDrive extends Command {
     if(RT_Status == 0){
       if(RT > 0.7){
         Robot.m_Chassis.AddInitAngle();
-        System.out.println("RT_TRIG!!");
         RT_Status = 1; 
       }
     }else if(RT_Status == 1){
@@ -54,6 +52,23 @@ public class PIDJoystickDrive extends Command {
 
     double Joystick_Y = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_LY) * Useful.Boolean_To_Int(RobotMap.Joystick_Y_Invert);
     double Joystick_X = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_RX) * Useful.Boolean_To_Int(RobotMap.Joystick_X_Invert);
+
+    if(!RobotMap.Joystick_Y_Linear){
+      if(Joystick_Y > 0 && Joystick_Y < 1){
+        Joystick_Y = Math.pow(Math.abs(Joystick_Y),2.15);
+      }else if(Joystick_Y  < 0 && Joystick_Y > -1){
+        Joystick_Y = -Math.pow(Math.abs(Joystick_Y),2.15);
+      }
+    }
+    if(!RobotMap.Joystick_X_Linear){
+      if(Joystick_X > 0 && Joystick_Y < 1){
+        Joystick_X = Math.pow(Math.abs(Joystick_X),2.15);
+      }else if(Joystick_X  < 0 && Joystick_X > -1){
+        Joystick_X = -Math.pow(Math.abs(Joystick_X),2.15);
+      }
+    }
+    System.out.println(Joystick_X);
+
     if(Math.abs(Joystick_Y) < RobotMap.Joystick_ERR){
       Joystick_Y = 0;
     }
