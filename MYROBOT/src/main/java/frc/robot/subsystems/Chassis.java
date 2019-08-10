@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Timer;
 
 
+
 public class Chassis extends Subsystem {
   public VictorSP RBM = new VictorSP(RobotMap.Motor_RB);
   public VictorSP LBM = new VictorSP(RobotMap.Motor_LB);
@@ -47,14 +48,6 @@ public class Chassis extends Subsystem {
     InitAngle = Value;
   }
 
-  public void AddInitAngle(){
-    InitAngle = (InitAngle + 90)%360;
-  }
-
-  public void MinusInitAngle(){
-    InitAngle = (InitAngle - 90)%360;
-  }
-
   public double ReadAngle(){
     return gyro.getAngle() % 360;
   }
@@ -66,11 +59,11 @@ public class Chassis extends Subsystem {
   public void DisablePID(){
     PID_Previous_Time = PID_Timer.get();
     Enable_PID = false;
-    //System.out.println(Enable_PID + " " + PID_Timer.get());
+    System.out.println(Enable_PID + " " + PID_Timer.get());
   }
 
   public void EnablePID(){
-    //System.out.println(Enable_PID + " " + PID_Timer.get());
+    System.out.println(Enable_PID + " " + PID_Timer.get());
     if(Enable_PID == false && PID_Timer.get() > PID_Previous_Time + RobotMap.PID_Enable_Delay){
       Enable_PID = true;
       SetInitAngle(ReadAngle());

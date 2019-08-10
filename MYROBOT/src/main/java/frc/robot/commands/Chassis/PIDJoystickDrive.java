@@ -6,9 +6,8 @@ import frc.robot.RobotMap;
 import frc.robot.Useful;
 
 public class PIDJoystickDrive extends Command {
-  int LT_Status = 0;
-  int RT_Status = 0;
   public PIDJoystickDrive() {
+    int x =5;
     requires(Robot.m_Chassis);
   }
 
@@ -21,54 +20,18 @@ public class PIDJoystickDrive extends Command {
   protected void execute() {
     double Rspd = 0.0;
     double Lspd = 0.0;
-    double LT = Robot.m_oi.Controller.getRawAxis(RobotMap.LT_Analog);
-    double RT = Robot.m_oi.Controller.getRawAxis(RobotMap.RT_Analog);
-
-    if(LT_Status == 0){
-      if(LT > 0.7){
-        Robot.m_Chassis.MinusInitAngle();
-        LT_Status = 1;
-      }
-    }else if(LT_Status == 1){
-      if(LT < 0.7){
-        LT_Status = 2;
-      }
-    }else if(LT_Status == 2){
-      LT_Status = 0;
+    double Joystick_Y = 0.0;
+    //double Joystick_Y = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_LY) * Useful.Boolean_To_Int(RobotMap.Joystick_Y_Invert);
+    if(Robot.m_oi.Controller.getRawAxis(RobotMap.RT_Analog)>=0.1){
+      Joystick_Y = Robot.m_oi.Controller.getRawAxis(RobotMap.RT_Analog) * Useful.Boolean_To_Int(RobotMap.Joystick_Y_Invert);
     }
-
-    if(RT_Status == 0){
-      if(RT > 0.7){
-        Robot.m_Chassis.AddInitAngle();
-        RT_Status = 1; 
-      }
-    }else if(RT_Status == 1){
-      if(RT < 0.7){
-        RT_Status = 2;
-      }
-    }else if(RT_Status == 2){
-      RT_Status = 0;
+    else if(Robot.m_oi.Controller.getRawAxis(RobotMap.LT_Analog)>=0.1){
+      Joystick_Y =-1 * Robot.m_oi.Controller.getRawAxis(RobotMap.LT_Analog) * Useful.Boolean_To_Int(RobotMap.Joystick_Y_Invert);
     }
-
-    double Joystick_Y = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_LY) * Useful.Boolean_To_Int(RobotMap.Joystick_Y_Invert);
+    else{
+      Joystick_Y = 0;
+    }
     double Joystick_X = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_RX) * Useful.Boolean_To_Int(RobotMap.Joystick_X_Invert);
-
-    if(!RobotMap.Joystick_Y_Linear){
-      if(Joystick_Y > 0 && Joystick_Y < 1){
-        Joystick_Y = Math.pow(Math.abs(Joystick_Y),2.15);
-      }else if(Joystick_Y  < 0 && Joystick_Y > -1){
-        Joystick_Y = -Math.pow(Math.abs(Joystick_Y),2.15);
-      }
-    }
-    if(!RobotMap.Joystick_X_Linear){
-      if(Joystick_X > 0 && Joystick_Y < 1){
-        Joystick_X = Math.pow(Math.abs(Joystick_X),2.15);
-      }else if(Joystick_X  < 0 && Joystick_X > -1){
-        Joystick_X = -Math.pow(Math.abs(Joystick_X),2.15);
-      }
-    }
-    System.out.println(Joystick_X);
-
     if(Math.abs(Joystick_Y) < RobotMap.Joystick_ERR){
       Joystick_Y = 0;
     }
@@ -101,7 +64,8 @@ public class PIDJoystickDrive extends Command {
   protected void end() {
     Robot.m_Chassis.SetSpeed(0,0);
   }
-
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
     this.end();

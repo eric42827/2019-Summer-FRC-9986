@@ -5,13 +5,14 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.Useful;
 
-public class JoystickDrive extends Command {
-  public JoystickDrive() {
+public class PIDJoystickDrive extends Command {
+  public PIDJoystickDrive() {
     requires(Robot.m_Chassis);
   }
 
   @Override
   protected void initialize() {
+    Robot.m_Chassis.InitGryo();
   }
 
   @Override
@@ -24,16 +25,25 @@ public class JoystickDrive extends Command {
       Joystick_Y = 0;
     }
     if(Math.abs(Joystick_X) < RobotMap.Joystick_ERR){
+      Robot.m_Chassis.EnablePID();
       Joystick_X = 0;
+      double gryo = Robot.m_Chassis.ReadNowAngle(Robot.m_Chassis.ReadAngle());
+      if(RobotMap.GryoDebug){
+        System.out.println(gryo);
+      }
+      double pid = Robot.m_Chassis.PID(gryo, RobotMap.Kp, RobotMap.Ki, RobotMap.Kd);
+      Rspd = Joystick_Y - pid;
+      Lspd = Joystick_Y + pid;
+    }else{
+      Rspd = Joystick_Y - Joystick_X;
+      Lspd = Joystick_Y + Joystick_X;
+      Robot.m_Chassis.DisablePID();
+      Robot.m_Chassis.SetInitPIDVariable();
     }
-    Rspd = Joystick_Y - Joystick_X;
-    Lspd = Joystick_Y + Joystick_X;
-
     Rspd = Useful.Constrain(Rspd,1,-1);
     Lspd = Useful.Constrain(Lspd,1,-1);
     Robot.m_Chassis.SetSpeed(Lspd,-Rspd);
   }
-
   @Override
   protected boolean isFinished() {
     return false;
@@ -43,9 +53,10 @@ public class JoystickDrive extends Command {
   protected void end() {
     Robot.m_Chassis.SetSpeed(0,0);
   }
-
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
-  protected void interrupted(){
+  protected void interrupted() {
     this.end();
   }
 }

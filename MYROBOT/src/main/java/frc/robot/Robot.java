@@ -2,9 +2,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-
+import frc.robot.OI;
 import frc.robot.subsystems.Chassis;
-
+import frc.robot.subsystems.Lift;
+import frc.robot.subsystems.Cargo;
+import frc.robot.shootingclas;
+import frc.robot.lift;
 
 
 //import edu.wpi.first.wpilibj.command.Command;
@@ -14,8 +17,20 @@ import frc.robot.subsystems.Chassis;
 public class Robot extends TimedRobot {
   //Subsystem Declaration//
   public static Chassis m_Chassis = new Chassis();
-  public static OI m_oi = new OI();
+  public static Lift m_Lift = new Lift();
+  public static Cargo m_Cargo = new Cargo(); 
 
+ // public static Cargo m_Cargo = new Cargo();
+  public static OI m_oi = new OI();
+  private shootingclas s1 = new shootingclas();
+  //private panel p1 = new panel();
+  private lift l1 = new lift();
+
+  //int x;
+  //int y;
+  //public panel
+  //shoot.Hold=;
+  //shoot2.HOLD;
   //Sensor Declaration//
 
   
@@ -26,6 +41,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     Robot.m_Chassis.InitGryo();
+    s1.initial();
   }
   @Override
   public void robotPeriodic() {
@@ -51,13 +67,11 @@ public class Robot extends TimedRobot {
     //if (m_autonomousCommand != null) {
       //m_autonomousCommand.start();
     //}
-    
   }
   @Override
   public void autonomousPeriodic() {
     //Scheduler.getInstance().run();
   }
-
 
   //About Teleop Function
   @Override
@@ -69,6 +83,9 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    //s1.execute();
+    //p1.execute();
+    l1.execute();
   }
 
 
