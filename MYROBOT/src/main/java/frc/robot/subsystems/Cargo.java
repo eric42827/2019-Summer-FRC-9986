@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.OI;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import frc.robot.commands.gou;
+import frc.robot.commands.Chassis.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -26,16 +26,21 @@ public class Cargo extends Subsystem {
   boolean Hold;
   boolean CAngleU;
   boolean CAngleD;
+  int _mode;
   //Encoder CLE = Robot.m_Cargo.CLE;
   public VictorSP CRM = new VictorSP(RobotMap.Motor_cargor);
   public VictorSP CLM = new VictorSP(RobotMap.Motor_cargol);
   public WPI_TalonSRX CLift = new WPI_TalonSRX(RobotMap.Motor_cargolift);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
+  public Cargo(int mode){
+    _mode = mode;
+  }
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new gou());
+    if(_mode==1){
+      setDefaultCommand(new gou());
+    }
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }

@@ -5,9 +5,10 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.OI;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.Lift;
+import frc.robot.subsystems.Panel;
 import frc.robot.subsystems.Cargo;
-import frc.robot.shootingclas;
-import frc.robot.lift;
+//import frc.robot.shootingclas;
+//import frc.robot.lift;
 
 
 //import edu.wpi.first.wpilibj.command.Command;
@@ -16,32 +17,44 @@ import frc.robot.lift;
 
 public class Robot extends TimedRobot {
   //Subsystem Declaration//
-  public static Chassis m_Chassis = new Chassis();
-  public static Lift m_Lift = new Lift();
-  public static Cargo m_Cargo = new Cargo(); 
+  Camera m_cam = new Camera();
+  public static Chassis m_Chassis = new Chassis(2);
+  /*
+    2:PIDori
+    LY for forward/back
+    RX for left/right
+  */
+  public static Lift m_Lift = new Lift(2);
+  /*
+    2:test mode
+    RY for lift
+    RB climb forward
+    LB climb back
+  */
+  public static Cargo m_Cargo = new Cargo(1); 
+  /*
+    AB for in/out
+    XY for up/down
+  */
+  public static Panel m_Panel = new Panel(1);
+  /*
+    LX for swin panel
+  */
 
  // public static Cargo m_Cargo = new Cargo();
   public static OI m_oi = new OI();
-  private shootingclas s1 = new shootingclas();
+  //private shootingclas s1 = new shootingclas();
   //private panel p1 = new panel();
-  private lift l1 = new lift();
+  //private lift l1 = new lift();
 
-  //int x;
-  //int y;
-  //public panel
-  //shoot.Hold=;
-  //shoot2.HOLD;
-  //Sensor Declaration//
-
-  
-  
   //Command m_autonomousCommand;
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   @Override
   public void robotInit() {
     Robot.m_Chassis.InitGryo();
-    s1.initial();
+    m_cam.cameraInit();
+    //s1.initial();
   }
   @Override
   public void robotPeriodic() {
@@ -85,7 +98,8 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     //s1.execute();
     //p1.execute();
-    l1.execute();
+    //l1.execute();
+
   }
 
 

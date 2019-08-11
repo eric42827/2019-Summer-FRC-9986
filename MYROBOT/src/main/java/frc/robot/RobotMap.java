@@ -15,9 +15,12 @@ package frc.robot;
  */
 public class RobotMap {
   ////Chassis Setting////
-  public static int Motor_RB = 8;
+  public static int Motor_RB1 = 3;//Talon
+  public static int Motor_RB2 = 4;//Talon
+  public static int Motor_LB1 = 1;//Talon
+  public static int Motor_LB2 = 2;//Talon
   public static boolean Motor_RB_Invert = false;
-  public static int Motor_LB = 7;
+
   public static boolean Motor_LB_Invert = false;
 
   //PowerPercentage//
@@ -32,11 +35,11 @@ public class RobotMap {
   public static double PID_Enable_Delay = 0.5;
 
   ////Cargo Setting///
-  public static int Motor_cargol = 1;
+  public static int Motor_cargol = 1;//Victor
   public static boolean Motor_cargol_Invert = false;
-  public static int Motor_cargor = 2;
+  public static int Motor_cargor = 2;//Victor
   public static boolean Motor_cargor_Invert = false;
-  public static int Motor_cargolift = 1;
+  public static int Motor_cargolift = 13;//Talon
   public static boolean Motor_cargoangle_Invert = false;
   public static double liftspeed = 0.5;
   public static double CRspeed = 0.7;
@@ -88,7 +91,7 @@ public class RobotMap {
 
   //panel
   public static int stick = 0;
-  public static int motor = 1;
+  public static int motor = 1;//gogo
   public static int encoder_a = 3;
   public static int encoder_b = 4;
   public static int solenoid = 2;

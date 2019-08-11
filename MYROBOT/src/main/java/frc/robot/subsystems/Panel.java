@@ -6,44 +6,30 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-
-import frc.robot.commands.Lift.*;
-import edu.wpi.first.wpilibj.command.Subsystem;
+//import edu.wpi.first.wpilibj.XboxController;
+//import frc.robot.Robot;
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.DigitalInput;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import frc.robot.commands.pp;
+import edu.wpi.first.wpilibj.command.Subsystem;
+
 /**
  * Add your docs here.
  */
-public class Lift extends Subsystem {
-  WPI_TalonSRX lift_1;
-  WPI_TalonSRX lift_2;
-  public SpeedControllerGroup lift;
-  public WPI_TalonSRX climbForward;
-  public DigitalInput limitSwitch;
-  public DigitalInput limitSwitch_0;
-  int _mode;
-  public Lift(int mode){
-    lift_1 = new WPI_TalonSRX(RobotMap.lift1_pin);
-    lift_2 = new WPI_TalonSRX(RobotMap.lift2_pin);
-    lift = new SpeedControllerGroup(lift_1,lift_2);
-    climbForward = new WPI_TalonSRX(RobotMap.whatever);
-    limitSwitch = new DigitalInput(RobotMap.limitPin);
-    limitSwitch_0 = new DigitalInput(RobotMap.limitPin_0);
+public class Panel extends Subsystem {
+  public WPI_TalonSRX intake;
+  private int _mode;
+  public Panel(int mode){
+    intake = new WPI_TalonSRX(RobotMap.motor);
     _mode = mode;
   }
-
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   @Override
   public void initDefaultCommand() {
     if(_mode==1){
-      setDefaultCommand(new ponpon());
-    }
-    else if(_mode==2){
-      setDefaultCommand(new test());      
+      setDefaultCommand(new pp());
     }
 
     // Set the default command for a subsystem here.

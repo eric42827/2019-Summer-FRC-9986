@@ -5,16 +5,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 //import frc.robot.commands.Chassis.JoystickDrive;
 import frc.robot.commands.Chassis.PIDJoystickDrive;
+import frc.robot.commands.Chassis.PIDori;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Timer;
 
-
-
 public class Chassis extends Subsystem {
-  public VictorSP RBM = new VictorSP(RobotMap.Motor_RB);
-  public VictorSP LBM = new VictorSP(RobotMap.Motor_LB);
+  public WPI_TalonSRX RBM1 = new WPI_TalonSRX(RobotMap.Motor_RB1);
+  public WPI_TalonSRX RBM2 = new WPI_TalonSRX(RobotMap.Motor_RB2);
+  public WPI_TalonSRX LBM1 = new WPI_TalonSRX(RobotMap.Motor_LB1);
+  public WPI_TalonSRX LBM2 = new WPI_TalonSRX(RobotMap.Motor_LB2);
   public Timer PID_Timer = new Timer();
   public ADXRS450_Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
 
@@ -26,17 +29,22 @@ public class Chassis extends Subsystem {
   private double InitAngle = 0;
   private boolean Enable_PID = true;
   private double PID_Previous_Time = 0;
-
-  public Chassis(){
-    RBM.setInverted(RobotMap.Motor_RB_Invert);
-    LBM.setInverted(RobotMap.Motor_LB_Invert);
+  private int _mode;
+  public Chassis(int mode){
+    RBM1.setInverted(RobotMap.Motor_RB_Invert);
+    LBM1.setInverted(RobotMap.Motor_LB_Invert);
+    RBM2.setInverted(RobotMap.Motor_RB_Invert);
+    LBM2.setInverted(RobotMap.Motor_LB_Invert);
     PID_Timer.reset();
     PID_Timer.start();
+    _mode = mode;
   }
 
   public void SetSpeed(double Rspd,double Lspd){
-    LBM.set(Lspd*RobotMap.PowerPercentage);
-    RBM.set(Rspd*RobotMap.PowerPercentage);
+    LBM1.set(Lspd*RobotMap.PowerPercentage);
+    RBM1.set(Rspd*RobotMap.PowerPercentage);
+    LBM2.set(Lspd*RobotMap.PowerPercentage);
+    RBM2.set(Rspd*RobotMap.PowerPercentage);
   }
 
   public void InitGryo(){
@@ -91,6 +99,13 @@ public class Chassis extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new PIDJoystickDrive());
+      if(_mode==1){
+        setDefaultCommand(new PIDJoystickDrive());
+      }
+      if(_mode==2){
+        setDefaultCommand(new PIDori());
+      }
+    
+
   }
 }
