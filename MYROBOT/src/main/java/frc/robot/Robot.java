@@ -2,10 +2,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-
 import frc.robot.subsystems.Chassis;
-
-
+import frc.robot.subsystems.Cargo;
 
 //import edu.wpi.first.wpilibj.command.Command;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -14,6 +12,7 @@ import frc.robot.subsystems.Chassis;
 public class Robot extends TimedRobot {
   //Subsystem Declaration//
   public static Chassis m_Chassis = new Chassis();
+  public static Cargo m_Cargo = new Cargo();
   public static OI m_oi = new OI();
 
   //Sensor Declaration//

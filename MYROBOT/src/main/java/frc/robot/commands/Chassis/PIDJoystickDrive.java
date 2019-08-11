@@ -6,8 +6,9 @@ import frc.robot.RobotMap;
 import frc.robot.Useful;
 
 public class PIDJoystickDrive extends Command {
-  int LT_Status = 0;
-  int RT_Status = 0;
+  //byte LT_Status = 0;
+  //byte RT_Status = 0;
+  
   public PIDJoystickDrive() {
     requires(Robot.m_Chassis);
   }

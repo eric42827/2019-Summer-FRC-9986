@@ -32,15 +32,17 @@ public class Chassis extends Subsystem {
     Motor_RB.setInverted(RobotMap.Motor_RB_Invert);
     Motor_LA.setInverted(RobotMap.Motor_LA_Invert);
     Motor_LB.setInverted(RobotMap.Motor_LB_Invert);
+    Motor_RB.follow(Motor_RA);
+    Motor_LB.follow(Motor_LA);
     PID_Timer.reset();
     PID_Timer.start();
   }
 
   public void SetSpeed(double Rspd,double Lspd){
     Motor_RA.set(Lspd*RobotMap.ChassisPowerPercentage);
-    Motor_RB.set(Rspd*RobotMap.ChassisPowerPercentage);
+    //Motor_RB.set(Rspd*RobotMap.ChassisPowerPercentage);
     Motor_LA.set(Lspd*RobotMap.ChassisPowerPercentage);
-    Motor_LB.set(Rspd*RobotMap.ChassisPowerPercentage);
+    //Motor_LB.set(Rspd*RobotMap.ChassisPowerPercentage);
   }
 
   public void InitGryo(){
@@ -72,11 +74,9 @@ public class Chassis extends Subsystem {
   public void DisablePID(){
     PID_Previous_Time = PID_Timer.get();
     Enable_PID = false;
-    //System.out.println(Enable_PID + " " + PID_Timer.get());
   }
 
   public void EnablePID(){
-    //System.out.println(Enable_PID + " " + PID_Timer.get());
     if(Enable_PID == false && PID_Timer.get() > PID_Previous_Time + RobotMap.PID_Enable_Delay){
       Enable_PID = true;
       SetInitAngle(ReadAngle());
