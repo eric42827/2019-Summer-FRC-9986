@@ -1,19 +1,20 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 //import frc.robot.commands.Chassis.JoystickDrive;
 import frc.robot.commands.Chassis.PIDJoystickDrive;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Timer;
 
-
 public class Chassis extends Subsystem {
-  public VictorSP RBM = new VictorSP(RobotMap.Motor_RB);
-  public VictorSP LBM = new VictorSP(RobotMap.Motor_LB);
+  public WPI_TalonSRX Motor_RA = new WPI_TalonSRX(RobotMap.Motor_RA);
+  public WPI_TalonSRX Motor_RB = new WPI_TalonSRX(RobotMap.Motor_RB);
+  public WPI_TalonSRX Motor_LA = new WPI_TalonSRX(RobotMap.Motor_LA);
+  public WPI_TalonSRX Motor_LB = new WPI_TalonSRX(RobotMap.Motor_LB);
   public Timer PID_Timer = new Timer();
   public ADXRS450_Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
 
@@ -27,15 +28,19 @@ public class Chassis extends Subsystem {
   private double PID_Previous_Time = 0;
 
   public Chassis(){
-    RBM.setInverted(RobotMap.Motor_RB_Invert);
-    LBM.setInverted(RobotMap.Motor_LB_Invert);
+    Motor_RA.setInverted(RobotMap.Motor_RA_Invert);
+    Motor_RB.setInverted(RobotMap.Motor_RB_Invert);
+    Motor_LA.setInverted(RobotMap.Motor_LA_Invert);
+    Motor_LB.setInverted(RobotMap.Motor_LB_Invert);
     PID_Timer.reset();
     PID_Timer.start();
   }
 
   public void SetSpeed(double Rspd,double Lspd){
-    LBM.set(Lspd*RobotMap.PowerPercentage);
-    RBM.set(Rspd*RobotMap.PowerPercentage);
+    Motor_RA.set(Lspd*RobotMap.ChassisPowerPercentage);
+    Motor_RB.set(Rspd*RobotMap.ChassisPowerPercentage);
+    Motor_LA.set(Lspd*RobotMap.ChassisPowerPercentage);
+    Motor_LB.set(Rspd*RobotMap.ChassisPowerPercentage);
   }
 
   public void InitGryo(){
@@ -46,7 +51,6 @@ public class Chassis extends Subsystem {
   public void SetInitAngle(double Value){
     InitAngle = Value;
   }
-
   public void AddInitAngle(){
     InitAngle = (InitAngle + 90)%360;
   }
@@ -54,7 +58,6 @@ public class Chassis extends Subsystem {
   public void MinusInitAngle(){
     InitAngle = (InitAngle - 90)%360;
   }
-
   public double ReadAngle(){
     return gyro.getAngle() % 360;
   }

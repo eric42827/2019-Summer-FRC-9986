@@ -21,8 +21,8 @@ public class PIDJoystickDrive extends Command {
   protected void execute() {
     double Rspd = 0.0;
     double Lspd = 0.0;
-    double LT = Robot.m_oi.Controller.getRawAxis(RobotMap.LT_Analog);
-    double RT = Robot.m_oi.Controller.getRawAxis(RobotMap.RT_Analog);
+    double LT = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_LT);
+    double RT = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_RT);
 
     if(LT_Status == 0){
       if(LT > 0.7){

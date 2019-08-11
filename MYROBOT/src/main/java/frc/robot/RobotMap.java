@@ -15,12 +15,16 @@ package frc.robot;
  */
 public class RobotMap {
   ////Chassis Setting////
+  public static int Motor_RA = 1;
   public static int Motor_RB = 2;
+  public static int Motor_LA = 3;
+  public static int Motor_LB = 4;
+  public static boolean Motor_RA_Invert = false;
   public static boolean Motor_RB_Invert = false;
-  public static int Motor_LB = 1;
+  public static boolean Motor_LA_Invert = false;
   public static boolean Motor_LB_Invert = false;
   //PowerPercentage//
-  public static double PowerPercentage = 0.7;
+  public static double ChassisPowerPercentage = 0.7;
   //PID//
   public static double Kp = 0.02;
   public static double Ki = 0.00;
@@ -45,8 +49,8 @@ public class RobotMap {
   public static int Back_Button = 7;
   public static int Start_Button = 8;
   //Analog
-  public static int LT_Analog = 2;
-  public static int RT_Analog = 3;
+  public static int Joystick_LT = 2;
+  public static int Joystick_RT = 3;
   //Joystick
   public static int Joystick_LX = 0;
   public static int Joystick_LY = 1;
