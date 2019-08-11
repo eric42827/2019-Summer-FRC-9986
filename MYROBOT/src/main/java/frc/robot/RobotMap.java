@@ -25,8 +25,8 @@ public class RobotMap {
 
   //PowerPercentage//
   public static double PowerPercentage = 0.4;
-  public static double cargoShootingPP = 0.5;
-  public static double cargoLiftPP = 0.35;
+  public static double cargoShootingPP = 1;
+  public static double cargoLiftPP = 1;
 
   //PID//
   public static double Kp = 0.1;
@@ -35,15 +35,15 @@ public class RobotMap {
   public static double PID_Enable_Delay = 0.5;
 
   ////Cargo Setting///
-  public static int Motor_cargol = 1;//Victor
+  public static int Motor_cargol = 7;//Victor
   public static boolean Motor_cargol_Invert = false;
-  public static int Motor_cargor = 2;//Victor
+  public static int Motor_cargor = 9;//Victor
   public static boolean Motor_cargor_Invert = false;
-  public static int Motor_cargolift = 3;//Victor
+  public static int Motor_cargolift = 5;//Victor
   public static boolean Motor_cargoangle_Invert = false;
-  public static double liftspeed = 0.5;
-  public static double CRspeed = 0.7;
-  public static double CLspeed = 0.7;
+  public static double liftspeed = 0.25;
+  public static double CRspeed = 1;
+  public static double CLspeed = 1;
   ////Encoder Setting///
   public static int CargoLiftEncoderSA = 0;
   public static int CargoLiftEncoderSB = 1;
@@ -55,7 +55,7 @@ public class RobotMap {
   public static int limitPin = 1;
   public static int limitPin_0 = 0;
   public static int datStick = 0;
-  public static double liftSpeed= 0.5;
+  public static double liftSpeed= 1;
   public static double climbSpeed= 0.5;
   
   ////Controller Setting////
