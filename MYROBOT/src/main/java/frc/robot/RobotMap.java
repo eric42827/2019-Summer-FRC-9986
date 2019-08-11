@@ -91,7 +91,7 @@ public class RobotMap {
 
   //panel
   public static int stick = 0;
-  public static int motor = 1;//Victor(ignore)
+  public static int motor = 1;//Victor(ign)
   public static int encoder_a = 3;
   public static int encoder_b = 4;
   public static int solenoid = 2;

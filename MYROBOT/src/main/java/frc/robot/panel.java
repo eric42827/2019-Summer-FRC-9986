@@ -18,9 +18,9 @@ public class panel{
   }
 
   protected void arm(){
-    if(o1.Controller.getRawAxis(RobotMap.stick) > 0.3){
+    if(o1.Controller.getRawAxis(RobotMap.Joystick_LX) > 0.1){
       intake.set(0.3);
-    }else if(o1.Controller.getRawAxis(RobotMap.stick) < -0.3){
+    }else if(o1.Controller.getRawAxis(RobotMap.Joystick_LX) < -0.1){
       intake.set(-0.3);
     }else{
       intake.set(0);
