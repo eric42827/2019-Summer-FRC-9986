@@ -30,7 +30,7 @@ public class Cargo extends Subsystem {
   //Encoder CLE = Robot.m_Cargo.CLE;
   public VictorSP CRM = new VictorSP(RobotMap.Motor_cargor);
   public VictorSP CLM = new VictorSP(RobotMap.Motor_cargol);
-  public WPI_TalonSRX CLift = new WPI_TalonSRX(RobotMap.Motor_cargolift);
+  public VictorSP CLift = new VictorSP(RobotMap.Motor_cargolift);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public Cargo(int mode){
