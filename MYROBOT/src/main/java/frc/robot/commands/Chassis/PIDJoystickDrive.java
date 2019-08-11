@@ -21,6 +21,7 @@ public class PIDJoystickDrive extends Command {
   protected void execute() {
     double Rspd = 0.0;
     double Lspd = 0.0;
+    /*
     double LT = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_LT);
     double RT = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_RT);
 
@@ -49,7 +50,7 @@ public class PIDJoystickDrive extends Command {
     }else if(RT_Status == 2){
       RT_Status = 0;
     }
-
+    */
     double Joystick_Y = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_LY) * Useful.Boolean_To_Int(RobotMap.Joystick_Y_Invert);
     double Joystick_X = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_RX) * Useful.Boolean_To_Int(RobotMap.Joystick_X_Invert);
 

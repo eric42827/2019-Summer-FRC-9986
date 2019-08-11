@@ -51,6 +51,7 @@ public class Chassis extends Subsystem {
   public void SetInitAngle(double Value){
     InitAngle = Value;
   }
+  /*
   public void AddInitAngle(){
     InitAngle = (InitAngle + 90)%360;
   }
@@ -58,10 +59,12 @@ public class Chassis extends Subsystem {
   public void MinusInitAngle(){
     InitAngle = (InitAngle - 90)%360;
   }
+  */
+  
   public double ReadAngle(){
     return gyro.getAngle() % 360;
   }
-
+  
   public double ReadNowAngle(double Value){
     return ((((Value + (360 - InitAngle)) % 360) + 180) % 360) - 180;
   }
