@@ -11,9 +11,9 @@ public class Cargo extends Subsystem {
   public VictorSP Motor_L = new VictorSP(RobotMap.Intake_Motor_L);
   public VictorSP Motor_Pitch = new VictorSP(RobotMap.Intake_Motor_Pitch);
   public Cargo(){
-    Motor_R.setInverted(true);
-    Motor_L.setInverted(true);
-    Motor_Pitch.setInverted(true);
+    Motor_R.setInverted(RobotMap.Intake_Motor_R_Invert);
+    Motor_L.setInverted(RobotMap.Intake_Motor_L_Invert);
+    Motor_Pitch.setInverted(RobotMap.Intake_Motor_Pitch_invert);
   }
 
   public void SetIntakeSpeed(double Spd){

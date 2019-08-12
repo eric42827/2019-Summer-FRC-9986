@@ -39,7 +39,7 @@ public class Chassis extends Subsystem {
   }
 
   public void SetSpeed(double Rspd,double Lspd){
-    Motor_RA.set(Lspd*RobotMap.ChassisPowerPercentage);
+    Motor_RA.set(Rspd*RobotMap.ChassisPowerPercentage);
     //Motor_RB.set(Rspd*RobotMap.ChassisPowerPercentage);
     Motor_LA.set(Lspd*RobotMap.ChassisPowerPercentage);
     //Motor_LB.set(Rspd*RobotMap.ChassisPowerPercentage);

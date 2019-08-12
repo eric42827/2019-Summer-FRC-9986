@@ -10,7 +10,7 @@ public class RobotMap {
   public final static boolean Motor_RB_Invert = false;
   public final static boolean Motor_LA_Invert = false;
   public final static boolean Motor_LB_Invert = false;
-  public final static double ChassisPowerPercentage = 0.7;
+  public final static double ChassisPowerPercentage = 0.5;
   public final static double PID_Enable_Delay = 0.25;
   public final static double Kp = 0.02;
   public final static double Ki = 0.00;
@@ -18,18 +18,18 @@ public class RobotMap {
   
   
   ////Cargo Setting////
-  public final static byte Intake_Motor_R = 5;
+  public final static byte Intake_Motor_R = 9;
   public final static byte Intake_Motor_L = 7;
-  public final static byte Intake_Motor_Pitch = 9;
+  public final static byte Intake_Motor_Pitch = 5;
   public final static boolean Intake_Motor_R_Invert = false;
-  public final static boolean Intake_Motor_L_Invert = false;
+  public final static boolean Intake_Motor_L_Invert = true;
   public final static boolean Intake_Motor_Pitch_invert = false;
   public final static double IntakePowerPercentage = 1;
   public final static double IntakePitchPowerPercentage = 0.35;
   ////Controller Setting////
   public final static int Joystick_Port = 0;
-  public final static double Joystick_ERR = 0.25;
-  public final static boolean Joystick_Y_Invert = true;
+  public final static double Joystick_ERR = 0.2;
+  public final static boolean Joystick_Y_Invert = false;
   public final static boolean Joystick_X_Invert = true;
   public final static boolean Joystick_Y_Linear = false;
   public final static boolean Joystick_X_Linear = false;

@@ -54,6 +54,8 @@ public class PIDJoystickDrive extends Command {
     */
     double Joystick_Y = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_LY) * Useful.Boolean_To_Int(RobotMap.Joystick_Y_Invert);
     double Joystick_X = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_RX) * Useful.Boolean_To_Int(RobotMap.Joystick_X_Invert);
+    
+    //System.out.println("Y:"+Joystick_Y+"  X"+Joystick_X);
 
     if(!RobotMap.Joystick_Y_Linear){
       if(Joystick_Y > 0 && Joystick_Y < 1){
@@ -69,7 +71,7 @@ public class PIDJoystickDrive extends Command {
         Joystick_X = -Math.pow(Math.abs(Joystick_X),2.15);
       }
     }
-    System.out.println(Joystick_X);
+    
 
     if(Math.abs(Joystick_Y) < RobotMap.Joystick_ERR){
       Joystick_Y = 0;
@@ -78,9 +80,6 @@ public class PIDJoystickDrive extends Command {
       Robot.m_Chassis.EnablePID();
       Joystick_X = 0;
       double gryo = Robot.m_Chassis.ReadNowAngle(Robot.m_Chassis.ReadAngle());
-      if(RobotMap.GryoDebug){
-        System.out.println(gryo);
-      }
       double pid = Robot.m_Chassis.PID(gryo, RobotMap.Kp, RobotMap.Ki, RobotMap.Kd);
       Rspd = Joystick_Y - pid;
       Lspd = Joystick_Y + pid;
