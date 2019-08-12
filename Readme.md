@@ -1,5 +1,9 @@
-FRC富邦營隊
+2019FRC 9986 Code
 ===
+## Instuction
+- ## FRC Team 9986 Deep Space Robot Code @ TaiChuang, Taiwam 20190817-18
+- ### branch master is written by student Unreallin01
+- ### branch whole include the whole robot system with Command Subsystem structure
 ## 程式碼版本更新
 ### 2018/07/28-Rev.1
 1. 新增 Command架構
@@ -17,6 +21,10 @@ FRC富邦營隊
 ### 2018/08/04-REV.4
 1. 新增 搖桿雙重比率控制系統
 **Google能力很重要!!**
+
+### 2018/08/11-Whole branch complete
+1. Although we complete the code,we don't use the lift because some structure problem.
+2. The original panel was dropped ,we use simpler claw from Team 6191
 ## 教學網站
 ### FRC
 [FRC Programming Done Right](https://frc-pdr.readthedocs.io/en/latest/index.html?fbclid=IwAR276i1ZUqSgFHWxyXhrEKqihKN7qGrL4gE5BOkGGf-nQCi8M8I0rjGfF_Y)

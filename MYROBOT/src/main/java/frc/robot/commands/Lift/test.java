@@ -10,8 +10,8 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class test extends Command {
-  public test() {
+public class Test extends Command {
+  public Test() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_Lift);

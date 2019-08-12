@@ -5,13 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Panel;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotMap;
 
-public class pp extends Command {
-  public pp() {
+public class Intake extends Command {
+  public Intake() {
     requires(Robot.m_Panel);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);

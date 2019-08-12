@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 //import frc.robot.Robot;
 import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import frc.robot.commands.pp;
+import frc.robot.commands.Panel.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -29,7 +29,7 @@ public class Panel extends Subsystem {
   @Override
   public void initDefaultCommand() {
     if(_mode==1){
-      setDefaultCommand(new pp());
+      setDefaultCommand(new Intake());
     }
 
     // Set the default command for a subsystem here.

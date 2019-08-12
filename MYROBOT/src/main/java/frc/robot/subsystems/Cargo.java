@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.OI;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import frc.robot.commands.Chassis.*;
+import frc.robot.commands.Cargo.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -39,7 +39,7 @@ public class Cargo extends Subsystem {
   @Override
   public void initDefaultCommand() {
     if(_mode==1){
-      setDefaultCommand(new gou());
+      setDefaultCommand(new Claw());
     }
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());

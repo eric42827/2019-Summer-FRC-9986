@@ -40,10 +40,10 @@ public class Lift extends Subsystem {
   @Override
   public void initDefaultCommand() {
     if(_mode==1){
-      setDefaultCommand(new ponpon());
+      setDefaultCommand(new Ponpon());
     }
     else if(_mode==2){
-      setDefaultCommand(new test());      
+      setDefaultCommand(new Test());      
     }
 
     // Set the default command for a subsystem here.

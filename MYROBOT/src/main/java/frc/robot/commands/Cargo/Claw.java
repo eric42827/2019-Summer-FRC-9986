@@ -5,13 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.Chassis;
+package frc.robot.commands.Cargo;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotMap;
 
-public class gou extends Command {
-  public gou() {
+public class Claw extends Command {
+  public Claw() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_Cargo);
   }

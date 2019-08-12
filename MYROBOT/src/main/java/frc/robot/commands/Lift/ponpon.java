@@ -10,8 +10,8 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ponpon extends Command {
-  public ponpon() {
+public class Ponpon extends Command {
+  public Ponpon() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_Lift);

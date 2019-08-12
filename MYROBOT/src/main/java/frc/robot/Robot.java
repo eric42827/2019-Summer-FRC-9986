@@ -24,7 +24,7 @@ public class Robot extends TimedRobot {
     LY for forward/back
     RX for left/right
   */
-  public static Lift m_Lift = new Lift(2);
+  public static Lift m_Lift = new Lift(0);
   /*
     2:test mode
     RY for lift
@@ -40,13 +40,7 @@ public class Robot extends TimedRobot {
   /*
     LX for swin panel
   */
-
- // public static Cargo m_Cargo = new Cargo();
   public static OI m_oi = new OI();
-  //private shootingclas s1 = new shootingclas();
-  //private panel p1 = new panel();
-  //private lift l1 = new lift();
-
   //Command m_autonomousCommand;
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -54,7 +48,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     Robot.m_Chassis.InitGryo();
     m_cam.cameraInit();
-    //s1.initial();
   }
   @Override
   public void robotPeriodic() {
@@ -96,10 +89,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    //s1.execute();
-    //p1.execute();
-    //l1.execute();
-
   }
 
 
