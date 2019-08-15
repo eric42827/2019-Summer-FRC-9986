@@ -24,7 +24,7 @@ public class RobotMap {
   public final static boolean Intake_Motor_R_Invert = true;
   public final static boolean Intake_Motor_L_Invert = true;
   public final static boolean Intake_Motor_Pitch_invert = false;
-  public final static double IntakePowerPercentage = 1;
+  public final static double IntakePowerPercentage = 0.6;
   public final static double IntakePitchPowerPercentage = 0.35;
   public final static int Encoder_Pitch_DIOA = 9;
   public final static int Encoder_Pitch_DIOB = 8;
@@ -43,7 +43,7 @@ public class RobotMap {
   public final static boolean Joystick_Y_Linear = false;
   public final static boolean Joystick_X_Linear = false;
   public final static double Joystick_Y_Ratio = 1;
-  public final static double Joystick_X_Ratio = 0.6;
+  public final static double Joystick_X_Ratio = 0.75;
   public final static byte Button_Down = 1; //A-YELLOW
   public final static byte Button_Right = 2;//B-RED
   public final static byte Button_Left = 3;//X-BLUE

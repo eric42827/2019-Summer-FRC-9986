@@ -35,9 +35,9 @@ public class PIDJoystickDrive extends Command {
     }
     if(!RobotMap.Joystick_X_Linear){
       if(Joystick_X > 0 && Joystick_Y < 1){
-        Joystick_X = Math.pow(Math.abs(Joystick_X),2.15);
+        Joystick_X = Math.pow(Math.abs(Joystick_X),2.5);
       }else if(Joystick_X  < 0 && Joystick_X > -1){
-        Joystick_X = -Math.pow(Math.abs(Joystick_X),2.15);
+        Joystick_X = -Math.pow(Math.abs(Joystick_X),2.5);
       }
     }
     
