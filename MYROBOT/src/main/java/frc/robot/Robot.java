@@ -3,9 +3,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.Chassis;
+import frc.robot.subsystems.Panel;
 import frc.robot.subsystems.Cargo;
 
-//import edu.wpi.first.wpilibj.command.Command;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -13,8 +13,8 @@ public class Robot extends TimedRobot {
   //Subsystem Declaration//
   public static Chassis m_Chassis = new Chassis();
   public static Cargo m_Cargo = new Cargo();
+  public static Panel m_Panel = new Panel();
   public static OI m_oi = new OI();
-
   //Sensor Declaration//
 
   
@@ -54,7 +54,7 @@ public class Robot extends TimedRobot {
   }
   @Override
   public void autonomousPeriodic() {
-    //Scheduler.getInstance().run();
+    Scheduler.getInstance().run();
   }
 
 

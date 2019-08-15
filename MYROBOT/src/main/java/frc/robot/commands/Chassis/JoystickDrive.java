@@ -18,8 +18,8 @@ public class JoystickDrive extends Command {
   protected void execute() {
     double Rspd = 0.0;
     double Lspd = 0.0;
-    double Joystick_Y = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_LY) * Useful.Boolean_To_Int(RobotMap.Joystick_Y_Invert);
-    double Joystick_X = Robot.m_oi.Controller.getRawAxis(RobotMap.Joystick_RX) * Useful.Boolean_To_Int(RobotMap.Joystick_X_Invert);
+    double Joystick_Y = Robot.m_oi.GetAxis(RobotMap.Joystick_LY) * Useful.Boolean_To_Int(RobotMap.Joystick_Y_Invert);
+    double Joystick_X = Robot.m_oi.GetAxis(RobotMap.Joystick_RX) * Useful.Boolean_To_Int(RobotMap.Joystick_X_Invert);
     if(!RobotMap.Joystick_Y_Linear){
       if(Joystick_Y > 0 && Joystick_Y < 1){
         Joystick_Y = Math.pow(Math.abs(Joystick_Y),2.5);
@@ -34,21 +34,12 @@ public class JoystickDrive extends Command {
         Joystick_X = -Math.pow(Math.abs(Joystick_X),2.5);
       }
     }
-    System.out.println(Joystick_X);
-    /*
-    if(Math.abs(Joystick_Y) < RobotMap.Joystick_ERR){
-      Joystick_Y = 0;
-    }
-    if(Math.abs(Joystick_X) < RobotMap.Joystick_ERR){
-      Joystick_X = 0;
-    }
-    */
+    
     Rspd = Joystick_Y - Joystick_X;
     Lspd = Joystick_Y + Joystick_X;
-
     Rspd = Useful.Constrain(Rspd,1,-1);
     Lspd = Useful.Constrain(Lspd,1,-1);
-    Robot.m_Chassis.SetSpeed(Lspd,-Rspd);
+    Robot.m_Chassis.SetSpeed(Lspd,Rspd);
   }
 
   @Override

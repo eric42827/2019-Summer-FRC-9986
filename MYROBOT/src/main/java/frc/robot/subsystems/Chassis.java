@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Chassis extends Subsystem {
-  public WPI_TalonSRX Motor_RA = new WPI_TalonSRX(RobotMap.Motor_RA);
-  public WPI_TalonSRX Motor_RB = new WPI_TalonSRX(RobotMap.Motor_RB);
-  public WPI_TalonSRX Motor_LA = new WPI_TalonSRX(RobotMap.Motor_LA);
-  public WPI_TalonSRX Motor_LB = new WPI_TalonSRX(RobotMap.Motor_LB);
-  public Timer PID_Timer = new Timer();
-  public ADXRS450_Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
+  private WPI_TalonSRX Motor_RA = new WPI_TalonSRX(RobotMap.Motor_RA);
+  private WPI_TalonSRX Motor_RB = new WPI_TalonSRX(RobotMap.Motor_RB);
+  private WPI_TalonSRX Motor_LA = new WPI_TalonSRX(RobotMap.Motor_LA);
+  private WPI_TalonSRX Motor_LB = new WPI_TalonSRX(RobotMap.Motor_LB);
+  private Timer PID_Timer = new Timer();
+  private ADXRS450_Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
 
   private double Error = 0;
   private double SetPoint = 0;
@@ -38,7 +38,7 @@ public class Chassis extends Subsystem {
     PID_Timer.start();
   }
 
-  public void SetSpeed(double Rspd,double Lspd){
+  public void SetSpeed(double Lspd,double Rspd){
     Motor_RA.set(Rspd*RobotMap.ChassisPowerPercentage);
     //Motor_RB.set(Rspd*RobotMap.ChassisPowerPercentage);
     Motor_LA.set(Lspd*RobotMap.ChassisPowerPercentage);
